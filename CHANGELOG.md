@@ -9,3 +9,17 @@ All notable changes to this project will be documented in this file.
 - Added LICENSE (Apache 2.0)
 - Added CHANGELOG.md
 - Setup instructions for SSH remote and push
+
+## [Docs] Add review signature to all READMEs
+
+- Added audit trail line \"Reviewed by Goose 2026-04-07 16:05\" to the end of all `README.md` files across the project.
+- Ensures consistent documentation review and traceability for future audits.
+- Affected files:
+  - `anything-llm/README.md`
+  - `claude-lm-studio/README.md`
+  - `claude_playground/README.md`
+  - `goose/README.md`
+  - `langchain_playground/README.md`
+  - `llm_runner/README.md`
+  - `local_ai_servers/README.md`
+  - All nested `README.md` files under `local_ai_servers/` (e.g., `debug/`, `llama-cpp-server/`, etc.)

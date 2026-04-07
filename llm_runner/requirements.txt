@@ -1,0 +1,4 @@
+mlx-lm
+python-dotenv
+langchain-core
+

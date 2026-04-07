@@ -1,0 +1,11 @@
+mlx-lm
+python-dotenv
+langchain-core
+llama-cpp-python 
+langchain
+langchain-community
+fastapi
+uvicorn
+anthropic
+mcp
+httpx[socks]

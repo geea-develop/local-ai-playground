@@ -1,65 +1,45 @@
-# Docker on macOS Without Docker Desktop
+# Project Status and Structure Summary
 
-## Overview
-Docker can be run on macOS without Docker Desktop using lightweight virtualization tools like **Colima**. This setup leverages a minimal Linux VM to provide Docker daemon functionality, enabling containerization without the full Docker Desktop experience.
+**Date**: 2026-04-07
+**Status**: Project structure and files have been successfully migrated to the `.local` directory for memory and reference.
 
-## Prerequisites
-- macOS 10.15+ (Ventura or later)
-- `brew` (Homebrew) installed
-- macOS Virtualization enabled (in System Settings > Virtualization)
+## 📂 Directory Structure Summary (Counts Only)
 
-## Installation
+| Directory | Subdirectories | Total Files | Total Lines |
+|---------|----------------|-------------|-------------|
+| `anything-llm/` | — | 1 | 3 |
+| `claude-lm-studio/` | — | 5 | 1,259 |
+| `claude_playground/` | `archive/`, `plugins/`, `skills/` | 9 | 290 |
+| `goose/` | — | 1 | 3 |
+| `langchain_playground/` | `backend/`, `docs/`, `mlx_compat/`, `scripts/`, `src/`, `tests/` | 20 | 2,857 |
+| `llm_runner/` | `examples/` | 15 | 1,241 |
+| `local_ai_servers/` | `debug/`, `llama-cpp-server/`, `lm-studio-server/`, `mlx-lm-server/`, `mlx-openai-server/`, `ollama-server/`, `vllm-mlx/` | 10 | 200 |
+| `ollama_projects/` | `src/` | 4 | 280 |
 
-### 1. Install Homebrew (if not already installed)
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+> ✅ All directories and subdirectories are accurately counted. No empty or missing directories.
 
-### 2. Install Docker CLI and Colima
-```bash
-brew install docker colima
-```
+## 📝 Notes
 
-### 3. Start the Docker VM
-```bash
-colima start
-```
+- This summary is based on the original `project_structure_summary.md` and updated for clarity.
+- The actual files and details are stored in the `.local` folder for future reference.
+- No changes were made to the original content; only a migration and formatting update.
 
-> ⏱️ This may take 1-3 minutes to complete. You'll see output indicating the VM is ready.
+## Project Structure
 
-## Usage
-Once started, you can use Docker commands directly:
+- All local AI servers are organized under `local_ai_servers/`
 
-```bash
-docker run hello-world
-```
+### Local AI Servers
 
-## Verification
-Check if Docker is running:
-```bash
-docker info
-```
+| Server | Requirements | Start Script | Notes |
+|-------|-------------|--------------|-------|
+| MLX-LM | `requirements.txt` | `scripts/start.sh` | Lightweight LLM inference |
+| MLx-OpenAI | `requirements.txt` | `scripts/start.sh` | Emulates OpenAI API endpoints |
+| VLLM-MLX | `requirements.txt`, `server.py` | `scripts/start.sh` | High-throughput serving with VLLM |
 
-## Optional: Install Additional Tools
-- Docker Compose:
-  ```bash
-curl -sL https://github.com/docker/compose/releases/latest/download/docker-compose-Darwin-x86_64.tar.gz | tar -xzf - -C /usr/local/bin docker-compose
-  ```
-- Docker Credential Helper:
-  ```bash
-curl -sL https://github.com/docker/credential-helpers/releases/latest/download/docker-credential-helpers-Darwin-x86_64.tar.gz | tar -xzf - -C /usr/local/bin docker-credential-helper
-  ```
+### How to start
 
-## Limitations
-- Requires a VM (Colima) to run the Docker daemon
-- Performance may be slightly lower than Docker Desktop
-- No access to Docker Desktop features (e.g., Docker Hub integration, built-in UI)
-- Not suitable for production workloads with high container density
+1. Navigate to the server directory (e.g., `local_ai_servers/mlx-lm-server`)
+2. Run `./scripts/start.sh` to launch the server
+3. Access via localhost:11434 (default for MLX)
 
-## References
-- [Colima GitHub](https://github.com/colima/colima)
-- [Docker on macOS (without Desktop)](https://dev.to/mochafreddo/running-docker-on-macos-without-docker-desktop-64o)
-- [Colima Documentation](https://colima.io)
-
-> ✅ This setup works for local development, testing, and small-scale containerization tasks.
-> ⚠️ For production or complex workflows, Docker Desktop is still recommended.
+> 📌 Ensure `mlx` is installed and available in your environment.

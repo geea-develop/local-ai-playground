@@ -2,15 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2026-04-08] - smolagents local AI playground
+## [2026-04-08] - local AI playground updates
 
-- Initialized `smolagents` playground with a dedicated virtual environment.
-- Added multiple local model examples for Hugging Face `smolagents`:
-  - **MLX**: Optimized for Apple Silicon.
-  - **llama.cpp**: Direct GGUF loading with Metal acceleration.
-  - **LM Studio**: OpenAI-compatible API connectivity.
-  - **Ollama**: OpenAI-compatible API connectivity.
-- Integrated `dotenv` for centralized model path and API configuration.
+- Initialized `smolagents` playground with a dedicated virtual environment and examples for MLX, llama.cpp, LM Studio, and Ollama.
+- Setup `localai` directory with documentation and a Python example using the OpenAI SDK.
+- Integrated `dotenv` across all new examples for consistent configuration.
 
 ## [2026-04-07] - Docs and Structure Migration
 

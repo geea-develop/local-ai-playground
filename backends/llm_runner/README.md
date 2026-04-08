@@ -31,8 +31,8 @@ Pros: Blazing fast on Apple hardware, extremely low memory footprint, uses unifi
 Cons: Only works on macOS/Apple Silicon. Not available for Windows/Linux.
 
 No Server, no code. Just a simple Python library that runs the model directly on your Mac's Apple Silicon chip with incredible speed and efficiency.
-```
-mlx_lm.generate --model "/Volumes/Extreme SSD/mac_storage/Users/guyambar/lmstudio/models/lmstudio-community/Qwen3-4B-Instruct-2507-MLX-4bit" --prompt "hello"
+```bash
+mlx_lm.generate --model "/path/to/your/models/lmstudio-community/Qwen3-4B-Instruct-2507-MLX-4bit" --prompt "hello"
 ```
 
 <!-- Next -->

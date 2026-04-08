@@ -57,3 +57,6 @@ npx-debug.log*
 *.tmp
 *.bak
 *.old
+
+# Ignored sub-projects
+dashboards/dify/src/

@@ -26,20 +26,14 @@
 
 ## Project Structure
 
-- All local AI servers are organized under `local_ai_servers/`
+This project has been restructured for clarity into four logical categories: `frameworks`, `assistants`, `backends`, and `dashboards`.
 
-### Local AI Servers
+Please refer to the [STRUCTURE.md](./STRUCTURE.md) file for a complete overview of the directory organization and the specific terminology used within this local AI playground.
 
-| Server | Requirements | Start Script | Notes |
-|-------|-------------|--------------|-------|
-| MLX-LM | `requirements.txt` | `scripts/start.sh` | Lightweight LLM inference |
-| MLx-OpenAI | `requirements.txt` | `scripts/start.sh` | Emulates OpenAI API endpoints |
-| VLLM-MLX | `requirements.txt`, `server.py` | `scripts/start.sh` | High-throughput serving with VLLM |
+### Starting Local Custom Servers
 
-### How to start
-
-1. Navigate to the server directory (e.g., `local_ai_servers/mlx-lm-server`)
+1. Navigate to the server directory (e.g., `backends/custom_servers/mlx-lm-server`)
 2. Run `./scripts/start.sh` to launch the server
-3. Access via localhost:11434 (default for MLX)
+3. Access via the designated port (default for MLX is usually 11434, check the server config)
 
-> 📌 Ensure `mlx` is installed and available in your environment.
+> 📌 Ensure necessary dependencies (e.g., `mlx`, `torch`, `vllm`) are installed and available in your environment before running custom servers.

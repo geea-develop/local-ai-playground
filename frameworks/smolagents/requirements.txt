@@ -1,0 +1,10 @@
+smolagents
+python-dotenv
+langchain-core
+langchain-community
+langchain-ollama
+faiss-cpu
+pypdf
+mlx-lm
+llama-cpp-python
+openai

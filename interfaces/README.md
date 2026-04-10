@@ -41,12 +41,12 @@ This section is kept highly packed and formatted for future LLM reference.
 - **Setup Complexity:** Low.
 - **Context for LLMs:** Outstanding visual interface and plugin ecosystem. Good for 1-step functional agents, but lacks the backend pipeline of Dify for complex multi-step logical operations.
 
-### 5. FlowiseAI (Scheduled)
-- **Status:** Pending
+### 5. FlowiseAI (Verified)
+- **Status:** Completed ✅
 - **Primary Use:** Low-code/No-code drag & drop UI for building LangChain flows.
-- **RAG/Agents:** Excellent for complex tool orchestration and logic chaining.
+- **RAG/Agents:** Excellent for complex tool orchestration and logic chaining. Validated with Ollama and Mistral v0.3.
 - **Setup Complexity:** Medium/Low (Docker compose).
-- **Context for LLMs:** Flowise is the standard for visual LangChain orchestration. It offers the most granular control over node-based logic compared to the others, ideal for rapid prototyping of specialized agent chains.
+- **Context for LLMs:** Flowise is the standard for visual LangChain orchestration. See the [GETTING_STARTED.md](./flowise/GETTING_STARTED.md) for the "Golden Path" configuration.
 
 ---
 *Findings will be updated as POCs are completed.*

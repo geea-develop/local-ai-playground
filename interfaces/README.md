@@ -1,52 +1,47 @@
-# AI Interfaces & Orchestration Platforms
+# 📂 AI Interfaces & Orchestration Platforms
 
-This directory documents the research, tests, and configuration for evaluating open-source LLM interfaces and platforms. The goal is to find a unified interface to manage chats, personas, and up to 3-step agent workflows (with RAG) using our local AI backends (e.g., MLX running `qwen3-4b`).
-
-## Requirements
-- **Local Execution:** Must run efficiently on a Mac (Docker preferred for the UI, native for the MLX/backend).
-- **Backend Connectivity:** Must connect to OpenAI-compatible endpoints (MLX, LM Studio) or Ollama.
-- **Features:** 
-  - Chat Personas (System Prompt management).
-  - Capability for slightly complex workflows (up to 3 steps with RAG).
-
-## Evaluated Tools Overview
-
-This section is kept highly packed and formatted for future LLM reference.
-
-### 1. Dify (Verified)
-- **Status:** Completed ✅
-- **Primary Use:** Visual Workflow & Agent Builder / Full GenAI Platform.
-- **RAG/Agents:** Excellent. Verified with native Ollama orchestration.
-- **Setup Complexity:** High (requires multi-container Docker compose).
-- **Context for LLMs:** Dify is a full LLM app platform. See the [GETTING_STARTED.md](./dify/GETTING_STARTED.md) for the native Ollama configuration. Highly recommended for multi-step autonomous workflows requiring robust RAG.
-
-### 2. AnythingLLM (Scheduled)
-- **Status:** Pending
-- **Primary Use:** Workspace-based RAG and Document Chat.
-- **RAG/Agents:** Excellent RAG. Basic agentic skills built-in.
-- **Setup Complexity:** Medium/Low.
-- **Context for LLMs:** AnythingLLM is best for organizing local knowledge bases. It has default agentic skills to search web/docs but lacks visual workflow builder.
-
-### 3. Open WebUI (Scheduled)
-- **Status:** Pending
-- **Primary Use:** Polished ChatGPT-like chat interface.
-- **RAG/Agents:** Good RAG. Uses "Model Files" for personas. Extensible via Python tools.
-- **Setup Complexity:** Low (single container).
-- **Context for LLMs:** Ideal daily-driver UI. Extremely robust integration with Ollama and OpenAI API. Agent workflows are bounded by prompt engineering and Python script integrations.
-
-### 4. LobeChat (Scheduled)
-- **Status:** Pending
-- **Primary Use:** Client-heavy, highly polished UI for managing many different agent personas.
-- **RAG/Agents:** Relies on plugins for RAG. Excellent persona management.
-- **Setup Complexity:** Low.
-- **Context for LLMs:** Outstanding visual interface and plugin ecosystem. Good for 1-step functional agents, but lacks the backend pipeline of Dify for complex multi-step logical operations.
-
-### 5. FlowiseAI (Verified)
-- **Status:** Completed ✅
-- **Primary Use:** Low-code/No-code drag & drop UI for building LangChain flows.
-- **RAG/Agents:** Excellent for complex tool orchestration and logic chaining. Validated with Ollama and Mistral v0.3.
-- **Setup Complexity:** Medium/Low (Docker compose).
-- **Context for LLMs:** Flowise is the standard for visual LangChain orchestration. See the [GETTING_STARTED.md](./flowise/GETTING_STARTED.md) for the "Golden Path" configuration.
+This directory documents the research, tests, and configuration for evaluating open-source LLM interfaces and platforms. The goal is to establish a unified stack for local AI development with a focus on **Orchestration** and **RAG**.
 
 ---
-*Findings will be updated as POCs are completed.*
+
+## 🏆 Research Findings (Selection)
+
+After evaluating multiple tools, the following conclusions were reached for the current project:
+
+*   **Primary Orchestrator**: **FlowiseAI** (Selected for its superior balance of visibility, rapid node-based development, and granular control).
+*   **Secondary Platform**: **Dify** (Selected for its professional app-deployment interface and robust built-in citation tracking).
+*   **Best Chat Client**: **Open WebUI** (Selected for daily interaction and Ollama model management).
+
+---
+
+## 🛠 Evaluated Tools Summary
+
+### 1. FlowiseAI (Verified Winner) ✅
+- **Primary Use:** Visual, node-based orchestration for building complex agent chains.
+- **Why it won:** Excellent visibility into the LangChain process.
+- **Setup:** [GETTING_STARTED.md](./flowise/GETTING_STARTED.md)
+
+### 2. Dify (Verified Platform) ✅
+- **Primary Use:** A full-featured GenAI application platform for deploying multi-step autonomous agents.
+- **Why use it:** Best-in-class UI for citations and RAG management.
+- **Setup:** [GETTING_STARTED.md](./dify/GETTING_STARTED.md)
+
+### 3. Open WebUI (Verified Interface) ✅
+- **Primary Use:** Polished ChatGPT-style chat interface with Ollama model management.
+- **Why use it:** Extremely stable and robust; the "Daily Driver" for local models.
+- **Setup:** [GETTING_STARTED.md](./open_webui/GETTING_STARTED.md)
+
+### 4. LobeChat (Verified Client) ✅
+- **Primary Use:** Premium, sleek chat client focused on agent personas and local plugins.
+- **Limitation:** Not suitable for complex logic/workflow orchestration.
+- **Setup:** [GETTING_STARTED.md](./lobe_chat/GETTING_STARTED.md)
+
+### 5. AnythingLLM (Document Research) 📂
+- **Primary Use:** Workspace-based RAG and full-stack local document management.
+- **Limitation:** Lacks the advanced agentic orchestration features found in Dify or Flowise.
+- **Setup:** [INSTALL_GUIDE.md](./anything_llm/INSTALL_GUIDE.md)
+
+---
+
+## 🚀 Golden Stack Path
+For a complete local experience, it is recommended to run **Ollama** as the backend, with **Flowise** as the logic engine and **Open WebUI** as the primary interactive portal.

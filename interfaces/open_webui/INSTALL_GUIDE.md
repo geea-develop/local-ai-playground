@@ -1,29 +1,41 @@
-# Open WebUI POC Setup Guide
+# 🌐 Open WebUI POC Setup Guide
 
-Open WebUI is a highly polished, ChatGPT-like interface designed specifically for local LLMs. It is lightweight since it runs in a single container.
+Open WebUI is the definitive community-driven interface for local LLMs, particularly Ollama. It strikes a balance between a simple chat interface and a powerful extensible platform via Python "Functions."
 
-## Step-by-Step Installation
+---
 
-1. **Start the Docker Container**
-   Run the following single command in your terminal. We are mapping port `3000` to avoid conflicts, and using `--add-host=host.docker.internal:host-gateway` so the container can talk to your local Mac services (like MLX or Ollama).
+## 🛠 Prerequisites
 
-   ```bash
-   docker run -d -p 3000:8080 \
-     --add-host=host.docker.internal:host-gateway \
-     -v open-webui:/app/backend/data \
-     --name open-webui \
-     --restart always \
-     ghcr.io/open-webui/open-webui:main
-   ```
+- **Docker Desktop**
+- **Ollama** running locally on your Mac.
 
-2. **Verify the Installation**
-   It should be very fast. Run:
-   ```bash
-   docker ps | grep open-webui
-   ```
+---
 
-## Next Steps (Testing)
+## 📦 Installation Steps
 
-1. Open your browser and navigate to: **http://localhost:3000**
-2. Create your first admin account locally.
-3. To connect to our local models (MLX/LM Studio/Ollama), we will need to go to **Admin Panel > Settings > Connections** and input the `host.docker.internal` URLs. Let me know when you are ready to do this!
+### 1. Launch Open WebUI
+```bash
+cd interfaces/open_webui
+mkdir -p data
+docker compose up -d
+```
+
+### 2. Access the UI
+Open your browser and navigate to: **[http://localhost:3000](http://localhost:3000)**
+
+### 3. Account Setup
+1.  **Sign Up**: Create your first account (this will automatically be the Admin account).
+2.  **Connection**: By default, it will look for Ollama at `http://host.docker.internal:11434`.
+3.  **Model Selection**: Click the model selector at the top; your `mistral:v0.3` should be there immediately!
+
+---
+
+## 🏗 Advanced Orchestration (Workspace)
+
+Open WebUI has a **Workspace** section where you can discover:
+- **Models**: Create "ModelFiles" (similar to personas).
+- **Functions**: Import Python scripts that can act as orchestrators.
+- **Tools**: Connect your model to external scripts.
+
+> [!TIP]
+> Use Open WebUI when you want the **fastest** and most **stable** connection to Ollama, with the option to write code-based orchestration later.

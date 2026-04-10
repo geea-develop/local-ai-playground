@@ -25,7 +25,7 @@ This repository serves as a local AI playground and development environment. To 
 ### 4. `interfaces/`
 **Purpose**: Graphical environments and orchestration platforms that consume APIs provided by the `backends/`. These allow for model comparison, chatting, and no-code workflow building through a web interface.
 - **Chat Clients**: Focused on person-to-model interaction (e.g., **Open WebUI**, **Lobe Chat**).
-- **Orchestration Platforms**: Focused on RAG, multi-step agents, and app building (e.g., **Dify**, **AnythingLLM**).
+- **Orchestration Platforms**: Focused on RAG, multi-step agents, and app building (e.g., **Dify**, **AnythingLLM**, **FlowiseAI**).
 
 ## Guidelines for Adding New Tools
 

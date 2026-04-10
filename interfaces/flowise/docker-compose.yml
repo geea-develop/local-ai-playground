@@ -1,0 +1,18 @@
+services:
+    flowise:
+        image: flowiseai/flowise
+        restart: always
+        env_file:
+            - .env
+        environment:
+            - PORT=${PORT}
+            - DATABASE_PATH=/root/.flowise
+            - APIKEY_PATH=/root/.flowise
+            - LOG_PATH=/root/.flowise
+            - BLOB_STORAGE_PATH=/root/.flowise
+        ports:
+            - "${PORT}:${PORT}"
+        volumes:
+            - ./data:/root/.flowise
+        extra_hosts:
+            - "host.docker.internal:host-gateway"

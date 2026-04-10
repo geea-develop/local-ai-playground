@@ -13,6 +13,7 @@ services:
         ports:
             - "${PORT}:${PORT}"
         volumes:
-            - ~/.flowise:/root/.flowise
+            - ./.env:/root/.flowise/.env
+            - ./data:/root/.flowise
         extra_hosts:
             - "host.docker.internal:host-gateway"

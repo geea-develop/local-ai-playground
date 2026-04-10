@@ -1,4 +1,4 @@
-# Local AI Interface & Platform POCs
+# AI Interfaces & Orchestration Platforms
 
 This directory documents the research, tests, and configuration for evaluating open-source LLM interfaces and platforms. The goal is to find a unified interface to manage chats, personas, and up to 3-step agent workflows (with RAG) using our local AI backends (e.g., MLX running `qwen3-4b`).
 
@@ -40,6 +40,13 @@ This section is kept highly packed and formatted for future LLM reference.
 - **RAG/Agents:** Relies on plugins for RAG. Excellent persona management.
 - **Setup Complexity:** Low.
 - **Context for LLMs:** Outstanding visual interface and plugin ecosystem. Good for 1-step functional agents, but lacks the backend pipeline of Dify for complex multi-step logical operations.
+
+### 5. FlowiseAI (Scheduled)
+- **Status:** Pending
+- **Primary Use:** Low-code/No-code drag & drop UI for building LangChain flows.
+- **RAG/Agents:** Excellent for complex tool orchestration and logic chaining.
+- **Setup Complexity:** Medium/Low (Docker compose).
+- **Context for LLMs:** Flowise is the standard for visual LangChain orchestration. It offers the most granular control over node-based logic compared to the others, ideal for rapid prototyping of specialized agent chains.
 
 ---
 *Findings will be updated as POCs are completed.*

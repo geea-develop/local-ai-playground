@@ -1,39 +1,52 @@
-# Project Status and Structure Summary
+# 🚀 Local AI Playground
 
-**Date**: 2026-04-07
-**Status**: Project structure and files have been successfully migrated to the `.local` directory for memory and reference.
+Welcome to the **Local AI Playground**! This repository is a curated collection of local AI backends, graphical interfaces, agentic frameworks, and developer assistants. It serves as a unified environment for experimenting with, developing, and deploying AI models—all running locally on your hardware.
 
-## 📂 Directory Structure Summary (Counts Only)
+---
 
-| Directory | Subdirectories | Total Files | Total Lines |
-|---------|----------------|-------------|-------------|
-| `anything-llm/` | — | 1 | 3 |
-| `claude-lm-studio/` | — | 5 | 1,259 |
-| `claude_playground/` | `archive/`, `plugins/`, `skills/` | 9 | 290 |
-| `goose/` | — | 1 | 3 |
-| `langchain_playground/` | `backend/`, `docs/`, `mlx_compat/`, `scripts/`, `src/`, `tests/` | 20 | 2,857 |
-| `llm_runner/` | `examples/` | 15 | 1,241 |
-| `local_ai_servers/` | `debug/`, `llama-cpp-server/`, `lm-studio-server/`, `mlx-lm-server/`, `mlx-openai-server/`, `ollama-server/`, `vllm-mlx/` | 10 | 200 |
-| `ollama_projects/` | `src/` | 4 | 280 |
+## 🏗️ Project Architecture
 
-> ✅ All directories and subdirectories are accurately counted. No empty or missing directories.
+The project is organized into five logical pillars to ensure clarity and scalability as the local AI ecosystem evolves:
 
-## 📝 Notes
+| Pillar | Description | Key Components |
+| :--- | :--- | :--- |
+| **[`/backends`](./backends)** | Inference engines & model servers | Ollama, LM Studio, MLX, LocalAI |
+| **[`/interfaces`](./interfaces)** | Dashboards & Orchestration | Open WebUI, Dify, Lobe Chat, AnythingLLM |
+| **[`/frameworks`](./frameworks)** | Agentic SDKs & Libraries | LangChain, smolagents |
+| **[`/assistants`](./assistants)** | AI Coding Companions | Goose, Claude CLI |
+| **[`/docs`](./docs)** | Ecosystem Documentation | Architecture Blueprints, Cheat Sheets |
 
-- This summary is based on the original `project_structure_summary.md` and updated for clarity.
-- The actual files and details are stored in the `.local` folder for future reference.
-- No changes were made to the original content; only a migration and formatting update.
+For a detailed breakdown of the terminology and organization, see **[STRUCTURE.md](./STRUCTURE.md)**.
 
-## Project Structure
+---
 
-This project has been restructured for clarity into four logical categories: `frameworks`, `assistants`, `backends`, and `interfaces`.
+## 🎯 Quick Start
 
-Please refer to the [STRUCTURE.md](./STRUCTURE.md) file for a complete overview of the directory organization and the specific terminology used within this local AI playground.
+1.  **Select a Backend**: Navigate to [`backends/`](./backends) and launch your preferred inference engine (e.g., Ollama or MLX).
+2.  **Launch an Interface**: Choose a UI in [`interfaces/`](./interfaces) (e.g., Open WebUI) and connect it to your backend's API.
+3.  **Explore Agents**: Dive into [`frameworks/`](./frameworks) to build autonomous workflows or use [`assistants/`](./assistants) for AI-powered development.
 
-### Starting Local Custom Servers
+---
 
-1. Navigate to the server directory (e.g., `backends/custom_servers/mlx-lm-server`)
-2. Run `./scripts/start.sh` to launch the server
-3. Access via the designated port (default for MLX is usually 11434, check the server config)
+## 🛣️ Roadmap: The Unified Dashboard
 
-> 📌 Ensure necessary dependencies (e.g., `mlx`, `torch`, `vllm`) are installed and available in your environment before running custom servers.
+Our vision is to consolidate these isolated tools into a unified **Local AI Control Center**. We are currently moving towards using **Open WebUI** as the primary orchestration layer to manage chats, RAG, and multi-agent systems across all local backends.
+
+> [!TIP]
+> Check out the **[Architectural Blueprint](./docs/DASHBOARD.md)** to see how we're unifying the experience.
+
+---
+
+## 📜 Recent Updates
+
+- **[2026-04-10]**: Refactored project structure to include a dedicated `docs/` directory and modernized the main entry point.
+- **[2026-04-08]**: Initialized `smolagents` playground with cross-backend support.
+- **[2026-04-07]**: Standardized audit trails across all READMEs.
+
+*Full history available in [CHANGELOG.md](./CHANGELOG.md).*
+
+---
+
+> [!NOTE]  
+> This project is optimized for performance on **Apple Silicon** (M-series), leveraging MLX and native inference where possible.
+

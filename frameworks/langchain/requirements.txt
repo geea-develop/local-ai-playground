@@ -9,3 +9,6 @@ uvicorn
 anthropic
 mcp
 httpx[socks]
+langchain-ollama
+faiss-cpu
+pypdf

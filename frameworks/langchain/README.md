@@ -110,28 +110,46 @@ uvicorn backend.app:app --reload --host 127.0.0.1 --port 8000
 Tip: watch server logs (`backend.app` and `backend.model_loader`) to confirm
 prompt truncation and per-request inference times.
 
+## 🤖 Local Ollama RAG Example
+
+Following the successful patterns established in our orchestration platforms (Dify, Open WebUI), we have included a native LangChain implementation for Local RAG using Ollama.
+
+### Prerequisites
+1. Ensure Ollama is running.
+2. Pull the "Golden Path" models:
+   ```bash
+   ollama pull mistral:v0.3
+   ollama pull nomic-embed-text
+   ```
+
+### Execution
+Run the dedicated RAG chat example:
+```bash
+python ollama_rag_chat_example.py
+```
+
+### How it Works & Customization
+The script is now flexible and can be configured via environment variables or CLI:
+- **Unified Loading**: It defaults to the **Ollama Local API**, but can switch to **Local Files (.gguf)** if `USE_LOCAL_FILE=true` is set in your `.env`.
+- **Dynamic Models**: Configurable via `OLLAMA_LLM_MODEL` and `OLLAMA_EMBED_MODEL`.
+- **Local Embeddings**: Supports `HuggingFaceEmbeddings` for offline vectorization if `USE_LOCAL_EMBED=true`.
+
+---
+
 ## Key Technical Details for macOS Users
 
-llama-metal: When you install llama-cpp-python on Apple Silicon (M1/M2/M3), it automatically builds the Metal backend. You do not need to manually specify GPU layers unless you are doing heavy fine-tuning; the -1 setting lets the library manage the CPU/GPU split optimally for inference speed.
+**llama-metal**: When you install `llama-cpp-python` on Apple Silicon (M1/M2/M3), it automatically builds the Metal backend. You do not need to manually specify GPU layers unless you are doing heavy fine-tuning; the `-1` setting lets the library manage the CPU/GPU split optimally for inference speed.
 
-Model Format: The example uses repo_id, which downloads a .gguf file (quantized model) from HuggingFace. This format is highly optimized for local execution and keeps file sizes small (e.g., 1.5GB vs several GBs for float models).
+**Model Format**: The example uses `repo_id`, which downloads a `.gguf` file (quantized model) from HuggingFace. This format is highly optimized for local execution and keeps file sizes small.
 
-Where to get models: Search HuggingFace for "GGUF". Popular choices are Qwen2.5 (great reasoning), Llama-3, or Gemma.
+**Performance**:
+- **Apple Silicon**: Expect ~10–20 tokens per second for small models, scaling up significantly with larger chips.
+- **Intel Macs**: Performance will be slower as it relies purely on CPU without Metal acceleration.
 
-Performance:
-- M1/M2/M3 Macs: Expect ~10–20 tokens per second for small models, scaling up significantly with larger chips.
-- Intel Macs: Performance will be slower as it relies purely on CPU without Metal acceleration support in the same way.
+## Next Steps
 
-## Next Steps: Advanced Usage
+- **Streaming Responses**: Modify the chain to use `.stream()` for real-time output.
+- **Custom Knowledge**: Replace the mock texts in `ollama_rag_chat_example.py` with actual document loaders (PDF, Markdown).
+- **Hybrid Search**: Combine vector retrieval with keyword search for better accuracy.
 
-If you want to take this further, try these modifications:
-
-- Streaming Responses: To see text appear token-by-token (like typing), modify the chain to use llm(stream=True) and iterate over the result in a loop.
-- Custom Quantization: Download specific quantized models (e.g., Q4_K_M.gguf) to balance speed and memory usage.
-- RAG Integration: You can easily integrate this with LangChain Document Loaders to create a local RAG bot that answers questions about your own documents without sending data to the internet.
-
-<!-- TODO: read about RAG types and tools -->
-<!-- Read about using Goose, linux server, unsloth -->
-<!-- Try to benchmark and run a local model and iteract with it using langchain for development -->
-
-Reviewed by Goose 2026-04-07 16:05
+*Reviewed by Antigravity 2026-04-10*

@@ -13,12 +13,12 @@ This directory documents the research, tests, and configuration for evaluating o
 
 This section is kept highly packed and formatted for future LLM reference.
 
-### 1. Dify (Scheduled)
-- **Status:** Pending
-- **Primary Use:** Visual Workflow & Agent Builder.
-- **RAG/Agents:** Excellent. Native 3-step workflow support.
+### 1. Dify (Verified)
+- **Status:** Completed ✅
+- **Primary Use:** Visual Workflow & Agent Builder / Full GenAI Platform.
+- **RAG/Agents:** Excellent. Verified with native Ollama orchestration.
 - **Setup Complexity:** High (requires multi-container Docker compose).
-- **Context for LLMs:** Dify is a full LLM app platform. Highly recommended for multi-step autonomous workflows requiring RAG, though heavy on resources.
+- **Context for LLMs:** Dify is a full LLM app platform. See the [GETTING_STARTED.md](./dify/GETTING_STARTED.md) for the native Ollama configuration. Highly recommended for multi-step autonomous workflows requiring robust RAG.
 
 ### 2. AnythingLLM (Scheduled)
 - **Status:** Pending

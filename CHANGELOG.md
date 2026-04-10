@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-10] - Documentation and Structure Refactoring
+
+- Established a dedicated `docs/` directory for ecosystem documentation and architectural blueprints.
+- Moved `DASHBOARD.md`, `GOOSE.md`, and `LOCAL.md` to the `docs/` directory to clean up the repository root.
+- Completely redesigned the root `README.md` to serve as a modern, high-quality landing page with clear navigation and status updates.
+- Updated `STRUCTURE.md` to reflect the new repository layout and five-pillar organization.
+
 ## [2026-04-08] - local AI playground updates
 
 - Initialized `smolagents` playground with a dedicated virtual environment and examples for MLX, llama.cpp, LM Studio, and Ollama.

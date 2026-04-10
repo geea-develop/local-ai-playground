@@ -1,6 +1,6 @@
 # Project Structure & Terminology
 
-This repository serves as a local AI playground and development environment. To keep things organized and easy to navigate, we have divided the projects, tools, and code into four main categories based on standard terminology.
+This repository serves as a local AI playground and development environment. To keep things organized and easy to navigate, we have divided the projects, tools, and code into five main categories.
 
 ## 📂 Directories
 
@@ -16,16 +16,22 @@ This repository serves as a local AI playground and development environment. To 
 - **`claude-lm-studio/`**: Custom integrations utilizing Claude and LM Studio.
 
 ### 3. `backends/`
-**Purpose**: Open-source local execution engines, inference servers, and model runners. These components are responsible for hosting and serving the Large Language Models locally.
+**Purpose**: Open-source local execution engines, inference servers, and model runners. These components are responsible for hosting and serving Large Language Models locally.
 - **`ollama/`**: Projects directly relying on Ollama.
 - **`localai/`**: Setups and API emulation using LocalAI.
 - **`llm_runner/`**: Specialized orchestration for LLM inference.
-- **`custom_servers/`**: Contains various custom backend configurations depending on the local hardware (e.g. `mlx-lm-server`, `mlx-openai-server`, `vllm-mlx`). 
+- **`custom_servers/`**: Contains various custom backend configurations (e.g., `mlx-lm-server`, `vllm-mlx`). 
 
 ### 4. `interfaces/`
-**Purpose**: Graphical environments and orchestration platforms that consume APIs provided by the `backends/`. These allow for model comparison, chatting, and no-code workflow building through a web interface.
-- **Chat Clients**: Focused on person-to-model interaction (e.g., **Open WebUI**, **Lobe Chat**).
-- **Orchestration Platforms**: Focused on RAG, multi-step agents, and app building (e.g., **Dify**, **AnythingLLM**, **FlowiseAI**).
+**Purpose**: Graphical environments and orchestration platforms that consume APIs provided by the `backends/`. 
+- **Chat Clients**: Person-to-model interaction (e.g., **Open WebUI**, **Lobe Chat**).
+- **Orchestration Platforms**: RAG, multi-step agents, and app building (e.g., **Dify**, **AnythingLLM**, **FlowiseAI**).
+
+### 5. `docs/`
+**Purpose**: Centralized documentation, blueprints, and quick-reference guides for the entire ecosystem.
+- **`DASHBOARD.md`**: The vision for a unified Local AI Control Center.
+- **`GOOSE.md`**: Detailed guide for the Goose assistant.
+- **`LOCAL.md`**: Cheat sheet for local server commands.
 
 ## Guidelines for Adding New Tools
 
@@ -33,3 +39,5 @@ This repository serves as a local AI playground and development environment. To 
 - **Need a ready-made local UI or orchestrator?** Look in `interfaces/`.
 - **Adding a new model serving inference?** Place it in `backends/`.
 - **Testing a new autonomous coding CLI?** Place it in `assistants/`.
+- **General documentation or architecture plans?** Place them in `docs/`.
+

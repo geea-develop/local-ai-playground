@@ -2,6 +2,10 @@
 
 This directory documents the research, tests, and configuration for evaluating open-source LLM interfaces and platforms. The goal is to establish a unified stack for local AI development with a focus on **Orchestration** and **RAG**.
 
+- **[Dify](./dify)**: LLM application development platform with visual workflow orchestration.
+- **[Onyx](./onyx)**: Open-source enterprise search and RAG platform (formerly Danswer).
+- **[FlowiseAI](./flowise)**: Drag & drop interface to build customized LLM flows.
+
 ---
 
 ## 🏆 Research Findings (Selection)
@@ -40,6 +44,11 @@ After evaluating multiple tools, the following conclusions were reached for the 
 - **Primary Use:** Workspace-based RAG and full-stack local document management.
 - **Limitation:** Lacks the advanced agentic orchestration features found in Dify or Flowise.
 - **Setup:** [INSTALL_GUIDE.md](./anything_llm/INSTALL_GUIDE.md)
+
+### 6. Onyx (Enterprise Search & RAG) 📂
+- **Primary Use:** AI-powered search across 50+ enterprise data sources with high-quality citations.
+- **Why use it:** Best for finding information across massive, fragmented company datasets.
+- **Setup:** [GETTING_STARTED.md](./onyx/GETTING_STARTED.md)
 
 ---
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-12] - New Frameworks Integration
+
+- Added **LangGraph** framework to `frameworks/langgraph` with Ollama examples and stateful workflow documentation.
+- Integrated **DeepAgents** framework into `frameworks/deepagents` with autonomous agent harness examples and tools.
+- Added **Onyx** (formerly Danswer) to `interfaces/onyx` as an enterprise search and RAG platform.
+- Updated root `STRUCTURE.md` and `frameworks/README.md` to include the new orchestration tools.
+
 ## [2026-04-10] - Documentation and Structure Refactoring
 
 - Established a dedicated `docs/` directory for ecosystem documentation and architectural blueprints.

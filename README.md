@@ -11,8 +11,8 @@ The project is organized into five logical pillars to ensure clarity and scalabi
 | Pillar | Description | Key Components |
 | :--- | :--- | :--- |
 | **[`/backends`](./backends)** | Inference engines & model servers | Ollama, LM Studio, MLX, LocalAI |
-| **[`/interfaces`](./interfaces)** | Dashboards & Orchestration | Open WebUI, Dify, Lobe Chat, AnythingLLM |
-| **[`/frameworks`](./frameworks)** | Agentic SDKs & Libraries | LangChain, smolagents |
+| **[`/interfaces`](./interfaces)** | Dashboards & Orchestration | Open WebUI, Dify, Onyx, FlowiseAI |
+| **[`/frameworks`](./frameworks)** | Agentic SDKs & Libraries | LangChain, LangGraph, DeepAgents, smolagents |
 | **[`/assistants`](./assistants)** | AI Coding Companions | Goose, Claude CLI |
 | **[`/docs`](./docs)** | Ecosystem Documentation | Architecture Blueprints, Cheat Sheets |
 
@@ -39,6 +39,7 @@ Our vision is to consolidate these isolated tools into a unified **Local AI Cont
 
 ## 📜 Recent Updates
 
+- **[2026-04-12]**: Integrated **LangGraph**, **DeepAgents**, and **Onyx** (Enterprise Search) to the ecosystem.
 - **[2026-04-10]**: Refactored project structure to include a dedicated `docs/` directory and modernized the main entry point.
 - **[2026-04-08]**: Initialized `smolagents` playground with cross-backend support.
 - **[2026-04-07]**: Standardized audit trails across all READMEs.

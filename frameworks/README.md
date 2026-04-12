@@ -8,6 +8,8 @@ The focus here is on **code-centric** orchestration. Unlike the `interfaces/` di
 ## Contents
 
 - **[langchain/](./langchain)**: Experiments and evaluations using the LangChain library (Python/JS).
+- **[langgraph/](./langgraph)**: Stateful, multi-actor applications built on top of LangChain.
+- **[deepagents/](./deepagents)**: Advanced agent harness for long-horizon, complex tasks.
 - **[smolagents/](./smolagents)**: Lightweight agent construction using Hugging Face's `smolagents` framework.
 
 ## When to use these

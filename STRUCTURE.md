@@ -7,6 +7,8 @@ This repository serves as a local AI playground and development environment. To 
 ### 1. `frameworks/`
 **Purpose**: Libraries, SDKs, and orchestration tools used to build agentic AI applications. These are the code abstractions that help developers chain calls, manage memory, and define tool use.
 - **`langchain/`**: Experiments and tests with LangChain.
+- **`langgraph/`**: Building stateful, multi-actor workflows.
+- **`deepagents/`**: Advanced agent patterns and long-horizon tasks.
 - **`smolagents/`**: Proof of concept builds with Hugging Face's smolagents.
 
 ### 2. `assistants/`
@@ -25,7 +27,7 @@ This repository serves as a local AI playground and development environment. To 
 ### 4. `interfaces/`
 **Purpose**: Graphical environments and orchestration platforms that consume APIs provided by the `backends/`. 
 - **Chat Clients**: Person-to-model interaction (e.g., **Open WebUI**, **Lobe Chat**).
-- **Orchestration Platforms**: RAG, multi-step agents, and app building (e.g., **Dify**, **AnythingLLM**, **FlowiseAI**).
+- **Orchestration Platforms**: RAG, multi-step agents, and app building (e.g., **Dify**, **Onyx**, **AnythingLLM**, **FlowiseAI**).
 
 ### 5. `docs/`
 **Purpose**: Centralized documentation, blueprints, and quick-reference guides for the entire ecosystem.

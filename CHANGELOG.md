@@ -6,8 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - Added **LangGraph** framework to `frameworks/langgraph` with Ollama examples and stateful workflow documentation.
 - Integrated **DeepAgents** framework into `frameworks/deepagents` with autonomous agent harness examples and tools.
+- Added **Docling** framework to `frameworks/docling` for advanced document conversion (PDF, DOCX) and table extraction.
+- Integrated **Cognee** framework into `frameworks/cognee` to provide agents with semantic memory and knowledge graphs.
 - Added **Onyx** (formerly Danswer) to `interfaces/onyx` as an enterprise search and RAG platform.
-- Updated root `STRUCTURE.md` and `frameworks/README.md` to include the new orchestration tools.
+- Updated root `STRUCTURE.md` and `frameworks/README.md` to include Docling, Cognee, and other new tools.
 
 ## [2026-04-10] - Documentation and Structure Refactoring
 

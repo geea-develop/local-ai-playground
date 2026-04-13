@@ -1,0 +1,4 @@
+cognee[ollama]
+python-dotenv
+asyncio
+httpx

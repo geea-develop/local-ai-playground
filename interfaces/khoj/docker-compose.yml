@@ -1,0 +1,63 @@
+services:
+  database:
+    image: docker.io/pgvector/pgvector:pg15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - khoj_db:/var/lib/postgresql/data/
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  sandbox:
+    image: ghcr.io/khoj-ai/terrarium:latest
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 2
+  search:
+    image: docker.io/searxng/searxng:latest
+    volumes:
+      - khoj_search:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=${SEARXNG_BASE_URL}
+  server:
+    depends_on:
+      database:
+        condition: service_healthy
+    image: ghcr.io/khoj-ai/khoj:latest
+    ports:
+      - "42110:42110"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    working_dir: /app
+    volumes:
+      - khoj_config:/root/.khoj/
+      - khoj_models:/root/.cache/torch/sentence_transformers
+      - khoj_models:/root/.cache/huggingface
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - KHOJ_DJANGO_SECRET_KEY=${KHOJ_DJANGO_SECRET_KEY}
+      - KHOJ_DEBUG=${KHOJ_DEBUG}
+      - KHOJ_ADMIN_EMAIL=${KHOJ_ADMIN_EMAIL}
+      - KHOJ_ADMIN_PASSWORD=${KHOJ_ADMIN_PASSWORD}
+      - KHOJ_TERRARIUM_URL=${KHOJ_TERRARIUM_URL}
+      - KHOJ_SEARXNG_URL=${KHOJ_SEARXNG_URL}
+      # Connect to local Ollama
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - KHOJ_TELEMETRY_DISABLE=${KHOJ_TELEMETRY_DISABLE}
+    command: --host="0.0.0.0" --port=42110 -vv --anonymous-mode --non-interactive
+
+volumes:
+  khoj_config:
+  khoj_db:
+  khoj_models:
+  khoj_search:

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-16] - Personal AI Aggregation (Khoj)
+
+- Integrated **Khoj** (Personal AI Aggregator) to the `interfaces/khoj` directory.
+- Created local POC with `docker-compose.yml` supporting Ollama, Postgres, and Terrarium sandboxing.
+- Documented transition strategy from AnythingLLM to Khoj for solving "Manual Ingestion Syndrome".
+- Created comprehensive `SETUP_GUIDE.md` for Notion, GitHub, and Obsidian integrations.
+- Evaluated Khoj's background-daemon architecture versus AnythingLLM's workspace model.
+
 ## [2026-04-12] - New Frameworks Integration
 
 - Added **LangGraph** framework to `frameworks/langgraph` with Ollama examples and stateful workflow documentation.

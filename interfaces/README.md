@@ -50,6 +50,11 @@ After evaluating multiple tools, the following conclusions were reached for the 
 - **Why use it:** Best for finding information across massive, fragmented company datasets.
 - **Setup:** [GETTING_STARTED.md](./onyx/GETTING_STARTED.md)
 
+### 7. Khoj (Aggregator & 'Second Brain') ✅
+- **Primary Use:** Background indexing of Obsidian, Notion, and GitHub for a "set it and forget it" RAG experience.
+- **Why use it:** Solves "Manual Ingestion Syndrome" with its background daemon and native Obsidian plugin.
+- **Setup:** [README.md](./khoj/README.md)
+
 ---
 
 ## 🚀 Golden Stack Path

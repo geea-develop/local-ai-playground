@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-17] - Codebase Graph Indexing (Graphify)
+
+- Integrated **Graphify** tool to the `assistants/graphify` directory.
+- Created `README.md` with instructions for installation, usage, and integration with local assistants.
+- Updated root `README.md` and `STRUCTURE.md` to reflect the new addition.
+
 ## [2026-04-16] - Personal AI Aggregation (Khoj)
 
 - Integrated **Khoj** (Personal AI Aggregator) to the `interfaces/khoj` directory.

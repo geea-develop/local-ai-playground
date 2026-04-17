@@ -1,0 +1,18 @@
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: graphify-neo4j
+    ports:
+      - "7474:7474" # Browser UI
+      - "7687:7687" # Bolt protocol
+    environment:
+      - NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD}
+      - NEO4J_PLUGINS=["apoc"]
+    volumes:
+      - neo4j_data:/data
+      - neo4j_lib:/var/lib/neo4j/import # Important for CSV imports if needed
+      - .:/graphify_context             # Mount current dir to access cypher.txt
+
+volumes:
+  neo4j_data:
+  neo4j_lib:

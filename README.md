@@ -13,7 +13,7 @@ The project is organized into five logical pillars to ensure clarity and scalabi
 | **[`/backends`](./backends)** | Inference engines & model servers | Ollama, LM Studio, MLX, LocalAI |
 | **[`/interfaces`](./interfaces)** | Dashboards & Orchestration | Open WebUI, Dify, Onyx, Khoj, FlowiseAI |
 | **[`/frameworks`](./frameworks)** | Agentic SDKs & Libraries | LangChain, LangGraph, DeepAgents, smolagents |
-| **[`/assistants`](./assistants)** | AI Coding Companions | Goose, Claude CLI |
+| **[`/assistants`](./assistants)** | AI Coding Companions | Goose, Claude CLI, Graphify |
 | **[`/docs`](./docs)** | Ecosystem Documentation | Architecture Blueprints, Cheat Sheets |
 
 For a detailed breakdown of the terminology and organization, see **[STRUCTURE.md](./STRUCTURE.md)**.
@@ -39,6 +39,7 @@ Our vision is to consolidate these isolated tools into a unified **Local AI Cont
 
 ## 📜 Recent Updates
 
+- **[2026-04-17]**: Added **Graphify** integration to the `assistants` suite for local codebase knowledge graph indexing.
 - **[2026-04-16]**: Integrated **Khoj** (Personal AI Aggregator) to the ecosystem to solve 'Manual Ingestion Syndrome' for Obsidian, Notion, and GitHub.
 - **[2026-04-12]**: Integrated **LangGraph**, **DeepAgents**, and **Onyx** (Enterprise Search) to the ecosystem.
 - **[2026-04-10]**: Refactored project structure to include a dedicated `docs/` directory and modernized the main entry point.

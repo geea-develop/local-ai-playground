@@ -25,7 +25,13 @@ This folder contains examples of how to use Hugging Face's `smolagents` with loc
 
 ## Included Examples
 
-### 1. Ollama RAG (PDF Search) 🌟
+### 1. Google Gemini (Cloud) ☁️
+Demonstrates using Google's Gemini models via `LiteLLMModel`. It uses a `ToolCallingAgent` (JSON-based) which provides superior reliability for tool selection and parameter extraction with Gemini models.
+- **File:** `gemini_example.py`
+- **Requires:** `pip install litellm tavily-python`
+- **Run:** `python gemini_example.py`
+
+### 2. Ollama RAG (PDF Search) 🌟
 This implementation uses a direct context-to-prompt approach. While `smolagents` supports multi-step agents, local models like Mistral and Llama 3 often struggle with consistent JSON tool-calling formats. This version provides the most reliable performance for RAG tasks.
 - **File:** `ollama_rag_example.py`
 - **Features:** 

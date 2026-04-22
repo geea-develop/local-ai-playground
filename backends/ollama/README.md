@@ -1,210 +1,131 @@
-src/
-  __init__.py  [0]
-  example.py  [15]
-  ollama_client.py  [54]
+# 🦙 Ollama Backend
 
-## Ollama Projects
+[Ollama](https://ollama.com) is the primary inference backend for this playground. It provides a simple CLI and REST API for downloading, managing, and running open-source LLMs locally — with native support for Apple Silicon via Metal acceleration.
 
-This project demonstrates how to use the Ollama Python client to interact with local LLMs.
+---
 
-### Installation
+## 🚀 Quick Start
 
-First, install the Ollama Python client:
+### 1. Install Ollama
 
 ```bash
-pip install ollama
+# macOS (recommended)
+brew install ollama
+
+# Or download from https://ollama.com/download
 ```
 
-### Basic Usage
+### 2. Start the Server
 
-#### 1. Simple Chat Completion
+```bash
+ollama serve
+# Runs on http://localhost:11434 by default
+```
+
+### 3. Pull Models
+
+```bash
+# Recommended "Golden Path" models for this playground
+ollama pull mistral:v0.3        # Best general-purpose local LLM
+ollama pull llama3              # Meta's Llama 3
+ollama pull nomic-embed-text    # Embedding model for RAG
+ollama pull phi3                # Lightweight, fast model for tasks
+```
+
+### 4. Verify
+
+```bash
+ollama list       # Show downloaded models
+ollama run mistral:v0.3   # Interactive chat session
+```
+
+---
+
+## 📡 API Usage
+
+Ollama exposes an **OpenAI-compatible REST API** at `http://localhost:11434/v1`, making it compatible with any OpenAI SDK client.
+
+### Python (Native Ollama SDK)
 
 ```python
 import ollama
 
-# Basic chat
 response = ollama.chat(
-    model='llama3',
-    messages=[
-        {'role': 'user', 'content': 'Hello!'},
-    ]
+    model='mistral:v0.3',
+    messages=[{'role': 'user', 'content': 'Explain RAG in one paragraph.'}]
 )
-
 print(response['message']['content'])
 ```
 
-#### 2. Streaming Responses
+### Python (OpenAI-compatible SDK)
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+
+response = client.chat.completions.create(
+    model="mistral:v0.3",
+    messages=[{"role": "user", "content": "Hello from the Ollama OpenAI API!"}]
+)
+print(response.choices[0].message.content)
+```
+
+### Streaming Response
 
 ```python
 import ollama
 
-# Stream responses
-response = ollama.chat(
-    model='llama3',
-    messages=[
-        {'role': 'user', 'content': 'Write a short poem about Python programming'},
-    ],
+for chunk in ollama.chat(
+    model='mistral:v0.3',
+    messages=[{'role': 'user', 'content': 'Write a haiku about local AI.'}],
     stream=True
-)
-
-for chunk in response:
+):
     print(chunk['message']['content'], end='', flush=True)
 ```
 
-#### 3. With Context and History
+---
 
-```python
-import ollama
+## 🧩 Integration with This Playground
 
-# Chat with conversation history
-messages = [
-    {'role': 'user', 'content': 'What is Python?'},
-    {'role': 'assistant', 'content': 'Python is a high-level programming language...'},
-    {'role': 'user', 'content': 'What are its main features?'}
-]
+Ollama is the default backend for **all** frameworks and interfaces in this repo:
 
-response = ollama.chat(
-    model='llama3',
-    messages=messages
-)
+| Consumer | Configuration Key | Default Value |
+|---|---|---|
+| LangChain | `OLLAMA_BASE_URL` | `http://localhost:11434` |
+| smolagents | `OLLAMA_API_BASE` | `http://localhost:11434` |
+| LangGraph | `OLLAMA_BASE_URL` | `http://localhost:11434` |
+| Cognee | `LLM_API_BASE` | `http://localhost:11434/v1` |
+| Open WebUI | Configured in UI | `http://localhost:11434` |
+| Khoj | `OLLAMA_HOST` | `http://localhost:11434` |
 
-print(response['message']['content'])
-```
+---
 
-#### 4. Using Different Models
+## 📦 Source Files
 
-```python
-import ollama
+| File | Description |
+|---|---|
+| `src/` | Python utilities and Ollama client wrappers |
+| `src/ollama_client.py` | Reusable client class with streaming and history support |
+| `src/example.py` | Basic chat example using the client |
 
-# Different models
-models = ['llama3', 'mistral', 'phi3', 'gemma']
+---
 
-for model in models:
-    try:
-        response = ollama.chat(
-            model=model,
-            messages=[{'role': 'user', 'content': 'Hello!'}]
-        )
-        print(f"{model}: {response['message']['content'][:100]}...")
-    except Exception as e:
-        print(f"Error with {model}: {e}")
-```
+## 🔑 Key Parameters
 
-#### 5. Image and Multimodal Models
+| Parameter | Description |
+|---|---|
+| `model` | Model name (e.g., `mistral:v0.3`, `llama3`) |
+| `messages` | List of `{"role": "user"/"assistant"/"system", "content": "..."}` |
+| `stream` | `True` for streaming token output |
+| `temperature` | Randomness control (0.0–1.0, default 0.7) |
+| `num_predict` | Max tokens to generate |
 
-```python
-import ollama
+---
 
-# For multimodal models (if available)
-response = ollama.chat(
-    model='llava',
-    messages=[
-        {
-            'role': 'user',
-            'content': 'What do you see in this image?',
-            'images': ['path/to/image.jpg']
-        }
-    ]
-)
-```
+## 📚 Resources
 
-### Complete Example with Error Handling
-
-```python
-import ollama
-import json
-
-class OllamaClient:
-    def __init__(self, model='llama3'):
-        self.model = model
-    
-    def chat(self, message, system_prompt=None):
-        try:
-            messages = []
-            
-            if system_prompt:
-                messages.append({'role': 'system', 'content': system_prompt})
-            
-            messages.append({'role': 'user', 'content': message})
-            
-            response = ollama.chat(
-                model=self.model,
-                messages=messages
-            )
-            
-            return response['message']['content']
-            
-        except Exception as e:
-            return f"Error: {str(e)}"
-    
-    def stream_chat(self, message, system_prompt=None):
-        try:
-            messages = []
-            
-            if system_prompt:
-                messages.append({'role': 'system', 'content': system_prompt})
-            
-            messages.append({'role': 'user', 'content': message})
-            
-            response = ollama.chat(
-                model=self.model,
-                messages=messages,
-                stream=True
-            )
-            
-            full_response = ""
-            for chunk in response:
-                content = chunk['message']['content']
-                full_response += content
-                print(content, end='', flush=True)
-            
-            print()  # New line at the end
-            return full_response
-            
-        except Exception as e:
-            print(f"Error: {str(e)}")
-            return ""
-
-# Usage
-client = OllamaClient('llama3')
-
-# Regular chat
-result = client.chat("Explain quantum computing in simple terms")
-print(result)
-
-# Streaming chat
-print("Streaming response:")
-client.stream_chat("Write a 50-word explanation of machine learning")
-```
-
-### Prerequisites
-
-1. **Install Ollama**: Download and install Ollama from [ollama.com](https://ollama.com/download)
-2. **Pull Models**: Download models you want to use:
-
-   ```bash
-   ollama pull llama3
-   ollama pull mistral
-   ollama pull phi3
-   ollama pull gemma
-   ```
-
-### Key Parameters
-
-- `model`: The model name (e.g., 'llama3', 'mistral')
-- `messages`: List of message objects with 'role' and 'content'
-- `stream`: Boolean to enable streaming responses
-- `temperature`: Controls randomness (0.0 to 1.0)
-- `max_tokens`: Maximum tokens to generate
-
-### Common Models
-
-- `llama3` - Llama 3 (recommended)
-- `mistral` - Mistral
-- `phi3` - Phi-3
-- `gemma` - Gemma
-- `llava` - For image understanding
-
-This approach gives you full control over running local LLMs in Python with the convenience of the Ollama API.
-
-Reviewed by Goose 2026-04-07 16:05
+- [Ollama Official Site](https://ollama.com)
+- [Ollama Python SDK](https://github.com/ollama/ollama-python)
+- [Available Models (Ollama Library)](https://ollama.com/library)
+- [OpenAI Compatibility Docs](https://github.com/ollama/ollama/blob/main/docs/openai.md)

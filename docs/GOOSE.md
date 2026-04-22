@@ -1,44 +1,89 @@
 # Getting Started with Goose
 
 ## What is Goose?
-Goose is an open-source AI assistant designed to help developers build, manage, and iterate on software projects efficiently.
+[Goose](https://block.github.io/goose/) is Block's open-source autonomous AI coding agent. It is designed to help developers build, manage, and iterate on software projects — executing terminal commands, writing code, browsing documentation, and debugging — all driven by natural language instructions.
 
-## How to Get Started
-1. **Install Goose**: Use `pip install goose` or follow the installation guide.
-2. **Initialize a Project**: Run `goose init` to set up a project structure.
-3. **Set Session**: Start a new session with `goose session start` to manage your workflow.
-4. **Enable Developer Mode**: Use `goose developer enable` to access advanced development tools.
+---
 
-## Setting Session & Developer Mode
-- **Session**: Use `goose session start` to begin a new session. You can list active sessions with `goose session list`.
-- **Developer Mode**: Run `goose developer enable` to activate developer tools for advanced coding and debugging.
+## Installation
 
-## Quick Start
-1. **Install Goose**: Use `pip install goose` or follow the installation guide.
-2. **Initialize a Project**: Run `goose init` to set up a project structure.
-3. **Explore Extensions**: Use `goose list-extensions` to discover available tools.
-4. **Start Coding**: Use `goose analyze` to inspect code structure, or `goose shell` to run shell commands.
-
-## Setting Session & Developer Mode
-- **Session**: Use `goose session start` to begin a new session. You can list active sessions with `goose session list`.
-- **Developer Mode**: Run `goose developer enable` to activate developer tools for advanced coding and debugging.
-
-## Quick Start
-1. **Install Goose**: Use `pip install goose` or follow the installation guide.
-2. **Initialize a Project**: Run `goose init` to set up a project structure.
-3. **Explore Extensions**: Use `goose list-extensions` to discover available tools.
-4. **Start Coding**: Use `goose analyze` to inspect code structure, or `goose shell` to run shell commands.
-
-## Example Usage
 ```bash
-# Analyze code structure
-goose analyze ./src --focus=main
+# Install via pip
+pip install goose-ai
 
-# Run a shell command
-goose shell "ls -la"
+# Or follow the official install guide:
+# https://block.github.io/goose/docs/getting-started/installation
 ```
 
-## Tips
-- Start small: Begin with a single file or directory to understand the workflow.
-- Leverage extensions: Use `goose apps`, `goose analyze`, or `goose developer` for specific tasks.
-- Customize: Modify the `GOOSE.md` as you learn more about the tool.
+---
+
+## How to Get Started
+
+1. **Install Goose**: Use `pip install goose-ai` or follow the [installation guide](https://block.github.io/goose/docs/getting-started/installation).
+2. **Initialize a Project**: Run `goose session start` to begin a session in your project directory.
+3. **Enable Developer Mode**: Use the developer toolkit for advanced coding and debugging capabilities.
+
+---
+
+## Session Management
+
+```bash
+# Start a new session
+goose session start
+
+# Resume a previous session
+goose session resume
+
+# List all sessions
+goose session list
+```
+
+---
+
+## Quick Start Examples
+
+```bash
+# Analyze code structure
+goose "Explain the structure of this project"
+
+# Run a shell command via Goose
+goose "List all Python files in the src/ directory"
+
+# Write and run code
+goose "Create a Python script that pings the Ollama API and prints the available models"
+```
+
+---
+
+## Integration with This Playground
+
+Goose is used as the primary **autonomous coding agent** in this playground. It works best when given access to the full repository context.
+
+> [!TIP]
+> Combine Goose with **Graphify** (`assistants/graphify/`) to give it a structural knowledge graph of the codebase, dramatically reducing errors on large refactoring tasks.
+
+### Recommended Workflow
+
+1. Start an Ollama backend: `ollama serve`
+2. Open the playground in your terminal
+3. Start a Goose session: `goose session start`
+4. Give Goose a task: _"Set up the Cognee framework and run the example"_
+
+---
+
+## Configuration
+
+Goose reads configuration from `~/.config/goose/config.yaml`. Key settings:
+
+```yaml
+provider: ollama          # Use local Ollama as the LLM provider
+model: mistral:v0.3       # Default model
+```
+
+---
+
+## Resources
+
+- [Official Documentation](https://block.github.io/goose/)
+- [GitHub Repository](https://github.com/block/goose)
+- [Extensions Registry](https://block.github.io/goose/docs/extensions/)

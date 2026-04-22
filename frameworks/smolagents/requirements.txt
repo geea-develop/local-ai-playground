@@ -8,3 +8,7 @@ pypdf
 mlx-lm
 llama-cpp-python
 openai
+litellm
+duckduckgo-search
+ddgs
+tavily-python

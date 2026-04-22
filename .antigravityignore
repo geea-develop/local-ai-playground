@@ -1,0 +1,11 @@
+.env
+
+config
+
+**/.env
+
+**/__pycache__/
+
+**/./local
+
+./local/

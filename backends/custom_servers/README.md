@@ -1,81 +1,86 @@
-debug/
-  README.md  [28]
+# 🖥️ Custom Servers — Apple Silicon & Specialized Inference
 
-llama-cpp-server/
-  README.md  [19]
+This directory provides pre-configured server implementations for running LLMs with hardware-optimized backends. Each subdirectory is a self-contained server targeting a specific inference engine or hardware configuration.
 
-lm-studio-server/
-  README.md  [4]
+---
 
-mlx-lm-server/
-  scripts/
-    start.sh  [7]
-  README.md  [18]
-  requirements.txt  [1]
+## 📦 Contents
 
-mlx-openai-server/
-  logs/
-  scripts/
-    start.sh  [10]
-  README.md  [20]
-  requirements.txt  [1]
+| Server | Engine | Best For | API Style |
+|---|---|---|---|
+| **[ollama-server/](./ollama-server)** | Ollama | General-purpose local LLMs | Ollama-native + OpenAI-compat. |
+| **[mlx-lm-server/](./mlx-lm-server)** | MLX-LM | Apple Silicon (M-series) native inference | OpenAI-compatible |
+| **[mlx-openai-server/](./mlx-openai-server)** | MLX + OpenAI Proxy | Connect OpenAI clients to local MLX | OpenAI-compatible |
+| **[llama-cpp-server/](./llama-cpp-server)** | llama.cpp | GGUF model files with Metal acceleration | OpenAI-compatible |
+| **[lm-studio-server/](./lm-studio-server)** | LM Studio | GUI-based model management | OpenAI-compatible |
+| **[vllm-mlx/](./vllm-mlx)** | vLLM + MLX | High-throughput batch inference | OpenAI-compatible |
+| **[debug/](./debug)** | — | Connectivity testing & endpoint debugging | — |
 
-ollama-server/
-  README.md  [4]
+---
 
-vllm-mlx/
-  scripts/
-    start.sh  [7]
-  README.md  [22]
-  requirements.txt  [1]
-  server.py  [0]
+## 🚀 Quick Start
 
-## Local AI Server Setup
-
-This directory contains various local AI server implementations for different LLM backends:
-
-- **debug/**: Contains debugging tools and configuration files
-- **llama-cpp-server/**: Server for running llama.cpp-based models
-- **lm-studio-server/**: Server for LM Studio-compatible models
-- **mlx-lm-server/**: Server for running MLX-based models
-- **mlx-openai-server/**: OpenAI-compatible server for MLX models
-- **ollama-server/**: Ollama-compatible server for local model execution
-- **vllm-mlx/**: vLLM-based server for MLX models
-
-## Setup Instructions
-
-1. Start the appropriate server based on your model needs:
+All servers follow the same pattern:
 
 ```bash
-# For debugging
-cd debug && ./start.sh
+# 1. Enter the server directory
+cd <server-name>
 
-# For llama-cpp models
-cd llama-cpp-server && ./start.sh
-
-# For MLX models
-cd mlx-lm-server && ./start.sh
-
-# For Ollama models
-cd ollama-server && ./start.sh
+# 2. Start the server
+./scripts/start.sh
+# Or: python server.py (for Python-based servers)
 ```
 
-2. Configure your client to connect to the appropriate server endpoint.
+### Server Endpoints (Defaults)
 
-3. Test connectivity by sending a simple request to the server.
+| Server | Default Port | Base URL |
+|---|---|---|
+| `ollama-server` | 11434 | `http://localhost:11434` |
+| `mlx-lm-server` | 8080 | `http://localhost:8080` |
+| `mlx-openai-server` | 8000 | `http://localhost:8000` |
+| `llama-cpp-server` | 8000 | `http://localhost:8000` |
+| `lm-studio-server` | 1234 | `http://localhost:1234` |
+| `vllm-mlx` | 8000 | `http://localhost:8000` |
 
-## Key Features
+---
 
-- Supports multiple LLM backends (llama.cpp, MLX, Ollama, vLLM)
-- Provides OpenAI-compatible endpoints for easy integration
-- Includes pre-configured scripts for quick deployment
-- Each server includes its own configuration files and documentation
+## 🔌 Connecting to Frameworks
 
-## Troubleshooting
+All custom servers expose **OpenAI-compatible** `/v1/chat/completions` endpoints. Set the appropriate base URL in the framework's `.env` file:
 
-- Ensure all dependencies are installed before starting servers
-- Check logs in the `logs/` directory for error messages
-- Verify network connectivity between client and server
-- Ensure proper environment variables are set for authentication and model loading
+```bash
+# Example for LangChain connecting to mlx-openai-server
+OPENAI_API_BASE=http://localhost:8000/v1
+OPENAI_API_KEY=local  # Any non-empty string works
+```
 
-Reviewed by Goose 2026-04-07 16:05
+---
+
+## 🍎 Apple Silicon Notes
+
+- **MLX servers** (`mlx-lm-server`, `mlx-openai-server`) leverage Apple's unified memory and Metal GPU — significantly faster than CPU-only inference.
+- **llama.cpp** automatically uses the Metal backend on M-series chips; no manual GPU layer configuration is needed.
+- **vLLM-MLX** is suited for high-throughput use cases where you need to serve multiple concurrent requests locally.
+
+---
+
+## 🐛 Debugging
+
+Use the `debug/` subdirectory to:
+- Test basic connectivity to any server endpoint
+- Verify model loading and response format
+- Check log outputs from running servers
+
+```bash
+cd debug
+# Follow the README.md inside debug/ for specific debugging scripts
+```
+
+---
+
+## 🔧 Troubleshooting
+
+- **Server won't start**: Check that all dependencies in `requirements.txt` are installed in the correct virtual environment.
+- **Model not found**: Ensure the model path or model ID in the server config points to a valid local file or Ollama model name.
+- **Port conflict**: Change the port in `scripts/start.sh` and update your client's base URL accordingly.
+- **Slow inference**: Verify Metal acceleration is active (check for `ggml_metal_init` in logs for llama.cpp; use `--device metal` for MLX).

@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-21] - Workspace Map & Documentation Refresh
+
+- Generated `docs/WORKSPACE_MAP.md` — full structural map with Mermaid architecture diagram, directory tree, and component status tables.
+- Rewrote `STRUCTURE.md` to accurately reflect the current (April 2026) repository state.
+- Rewrote `frameworks/README.md` (was empty) with descriptions and setup patterns for all 6 frameworks.
+- Rewrote `backends/ollama/README.md` and `backends/custom_servers/README.md` (both had raw directory dumps as headers).
+- Updated `assistants/README.md` to include `gemini-cli`, `opencode`, and `github-copilot-cli`.
+- Created stub `README.md` files for `assistants/gemini-cli/`, `assistants/opencode/`, and `assistants/github-copilot-cli/`.
+- Fixed `docs/GOOSE.md` (removed duplicated Quick Start and Setting Session sections).
+- Updated root `README.md`: added Cognee/Docling to the 2026-04-12 entry, added WORKSPACE_MAP link.
+
 ## [2026-04-17] - Codebase Graph Indexing (Graphify)
 
 - Integrated **Graphify** tool to the `assistants/graphify` directory.

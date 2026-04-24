@@ -2,3 +2,5 @@ deepagents
 python-dotenv
 langchain-ollama
 langchain-google-genai
+langchain-aws
+boto3

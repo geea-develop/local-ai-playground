@@ -31,8 +31,9 @@
 
 ## Examples
 
-### ☁️ Cloud (Google Gemini)
+### ☁️ Cloud
 - **[gemini_basic_example.py](./gemini_basic_example.py)**: Simple tool-calling agent using Gemini Flash.
+- **[bedrock_basic_example.py](./bedrock_basic_example.py)**: Simple tool-calling agent using AWS Bedrock (e.g., Amazon Nova or Anthropic Claude).
 - **[gemini_subagents_example.py](./gemini_subagents_example.py)**: Orchestrator-worker pattern using multiple subagents (Researcher + Writer).
 - **[gemini_memory_example.py](./gemini_memory_example.py)**: Persistent memory using `MemoryMiddleware` and `FilesystemBackend` to remember user preferences across runs.
 
